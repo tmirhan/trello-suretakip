@@ -102,19 +102,28 @@
    * @param {Date|null} until - null ise süresiz ("Süreyi Gizle")
    */
   async function hideCard(t, card, until) {
-    const map = await getHiddenMap(t);
-    map[card.id] = {
-      cardId: card.id,
-      cardName: card.name,
-      listName: card.listName || '',
-      dueISO: card.dueISO || null,
-      hiddenUntilISO: until ? until.toISOString() : null,
-      hiddenPermanently: !until,
-      setAtISO: new Date().toISOString(),
-    };
-    await SS.setBoardShared(t, SS.KEYS.HIDDEN_CARDS_MAP, map);
-    return map[card.id];
+  const map = await getHiddenMap(t);
+
+  map[card.id] = {
+    cardId: card.id,
+    cardName: card.name,
+    listName: card.listName || '',
+    dueISO: card.dueISO || null,
+    hiddenUntilISO: until ? until.toISOString() : null,
+    hiddenPermanently: !until,
+    setAtISO: new Date().toISOString(),
+  };
+
+  // Power-Up kaydını sakla
+  await SS.setBoardShared(t, SS.KEYS.HIDDEN_CARDS_MAP, map);
+
+  // "Süreyi Gizle" seçildiyse Trello'nun gerçek Bitiş Tarihini kaldır
+  if (!until) {
+    await t.set('card', 'due', null);
   }
+
+  return map[card.id];
+}
 
   /**
    * "Tekrar Göster" — kartı gizleme haritasından tamamen kaldırır.
