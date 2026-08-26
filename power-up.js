@@ -213,19 +213,32 @@ TrelloPowerUp.initialize(
      * Kart ön yüzü rozetleri: mevcut HMK son-gün rozeti + yeni
      * gizli/ertelenmiş durum rozeti.
      */
-    'card-badges': function (t) {
+        'card-badges': function (t) {
       return Promise.all([
         t.get('card', 'shared', 'hmkSonGun'),
+        t.card('due'),
         SnoozeService.getCardHiddenStatus(t, t.getContext().card),
       ])
         .then(function (results) {
-          const sonGun = results[0];
-          const hiddenStatus = results[1];
+          const storedISO = results[0];
+          const card = results[1];
+          const hiddenStatus = results[2];
           const badges = [];
 
-          if (sonGun) {
-            badges.push({ text: 'HMK Son Gün: ' + sonGun, color: 'red' });
+          if (storedISO) {
+            const stillMatches =
+              card.due && new Date(card.due).getTime() === new Date(storedISO).getTime();
+
+            if (stillMatches) {
+              badges.push({
+                text: 'HMK Son Gün: ' + DateUtils.formatDateTR(new Date(storedISO)),
+                color: 'red',
+              });
+            } else {
+              t.remove('card', 'shared', 'hmkSonGun');
+            }
           }
+
           if (hiddenStatus.hidden) {
             const entry = hiddenStatus.entry;
             const label = entry.hiddenPermanently
@@ -239,7 +252,6 @@ TrelloPowerUp.initialize(
           return [];
         });
     },
-
     /**
      * Trello'ya REST API yetkisi olup olmadığını bildirir.
      */
