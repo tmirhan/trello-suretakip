@@ -217,8 +217,8 @@
         }
         return response.json();
       })
-      .then(() => {
-        return t.set('card', 'shared', 'hmkSonGun', DateUtils.formatDateTR(lastResult.sonGun));
+            .then(() => {
+        return t.set('card', 'shared', 'hmkSonGun', lastResult.sonGun.toISOString());
       })
       .then(() => {
         els.applyStatus.className = 'apply-status success';
