@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HMK Süre Hesaplama — Ayarlar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container settings-container">
+    <h2 class="settings-title">🔔 Bildirim Ayarları</h2>
+
+    <label class="switch-row">
+      <input type="checkbox" id="notificationsEnabled" />
+      <span>Bildirimleri Aç</span>
+    </label>
+
+    <fieldset class="field-group">
+      <legend>Bildirim Kanalları</legend>
+      <label class="checkbox-row"><input type="checkbox" id="chBrowser" /><span>Tarayıcı Bildirimleri</span></label>
+      <p class="hint" id="browserPermissionStatus"></p>
+      <label class="checkbox-row"><input type="checkbox" id="chEmail" /><span>E-posta</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="chSlack" /><span>Slack</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="chTeams" /><span>Teams</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="chDiscord" /><span>Discord</span></label>
+    </fieldset>
+
+    <fieldset class="field-group">
+      <legend>Ne Zaman Hatırlatılsın</legend>
+      <label class="checkbox-row"><input type="checkbox" id="thD7" /><span>7 Gün Önce</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="thD3" /><span>3 Gün Önce</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="thD1" /><span>1 Gün Önce</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="thDueDay" /><span>Son Gün</span></label>
+      <label class="checkbox-row"><input type="checkbox" id="thOverdue" /><span>Süresi Geçince</span></label>
+    </fieldset>
+
+    <fieldset class="field-group">
+      <legend>Kimler Bildirim Alsın</legend>
+      <label class="radio-option">
+        <input type="radio" name="recipientMode" value="cardMembers" />
+        <span>Kart üyeleri</span>
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="recipientMode" value="boardAdmins" />
+        <span>Board yöneticileri</span>
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="recipientMode" value="custom" />
+        <span>Belirli kullanıcılar</span>
+      </label>
+      <p class="hint">
+        ℹ️ E-posta kanalı, Trello'nun kart üyesi e-postalarını Power-Up'lara
+        açmaması nedeniyle her koşulda aşağıdaki e-posta listesine
+        gönderilir. Tarayıcı/Slack/Teams/Discord için bu seçim yalnızca
+        bildirim metnindeki "kime" bilgisini belirler.
+      </p>
+      <textarea id="customEmails" class="text-input textarea" rows="2"
+        placeholder="ornek1@firma.com, ornek2@firma.com"></textarea>
+    </fieldset>
+
+    <fieldset class="field-group">
+      <legend>Entegrasyonlar</legend>
+
+      <label class="field-label-sm">Slack Webhook URL</label>
+      <input type="text" id="slackWebhookUrl" class="text-input" placeholder="https://hooks.slack.com/services/..." />
+
+      <label class="field-label-sm">Teams Webhook URL</label>
+      <input type="text" id="teamsWebhookUrl" class="text-input" placeholder="https://outlook.office.com/webhook/..." />
+
+      <label class="field-label-sm">Discord Webhook URL</label>
+      <input type="text" id="discordWebhookUrl" class="text-input" placeholder="https://discord.com/api/webhooks/..." />
+
+      <p class="hint">E-posta göndermek için sunucu tarafında bir Resend hesabı yapılandırmanız gerekir (bkz. README.md § "E-posta Bildirimleri"). Aşağıdaki alanlar yalnızca gönderici görünümünü belirler:</p>
+      <label class="field-label-sm">Gönderen Ad (Sender Name)</label>
+      <input type="text" id="emailFromName" class="text-input" placeholder="Hukuk Bürosu Adı" />
+      <label class="field-label-sm">Gönderen E-posta (Sender Email)</label>
+      <input type="text" id="emailFromEmail" class="text-input" placeholder="hatirlatma@sizin-dogrulanmis-domaininiz.com" />
+      <p class="hint">⚠️ Gönderen e-posta adresinin domaini, Resend panelinizde doğrulanmış olmalıdır; aksi hâlde e-postalar yalnızca test amaçlı bir sandbox adresinden gönerilir.</p>
+    </fieldset>
+
+    <p class="error-message" id="settingsError" hidden></p>
+    <p class="apply-status" id="settingsStatus" hidden></p>
+
+    <div class="button-row">
+      <button type="button" id="saveSettingsBtn" class="btn btn-primary">Ayarları Kaydet</button>
+      <button type="button" id="historyLinkBtn" class="btn btn-secondary">Bildirim Geçmişi</button>
+    </div>
+  </div>
+
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  <script src="config.js"></script>
+  <script src="configGuard.js"></script>
+  <script src="storageService.js"></script>
+  <script src="settingsService.js"></script>
+  <script src="browserNotificationAdapter.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

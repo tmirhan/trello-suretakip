@@ -1,0 +1,10 @@
+{
+  "name": "trello-hmk-powerup",
+  "version": "1.0.0",
+  "private": false,
+  "description": "HMK süre hesaplama + süre gizleme/erteleme + çok kanallı otomatik hatırlatma (Tarayıcı, E-posta, Slack, Teams, Discord) özellikli, production-ready Trello Power-Up. Statik sitedir; tarayıcı tarafı build adımı gerektirmez. /api altındaki tek bir Vercel Serverless Function, e-posta gönderimi için Node çalışma zamanını kullanır.",
+  "scripts": {
+    "build": "echo 'Build adımı gerekmiyor - bu proje statik bir sitedir (yalnızca /api altındaki serverless fonksiyon Vercel tarafından otomatik derlenir).'"
+  },
+  "license": "MIT"
+}

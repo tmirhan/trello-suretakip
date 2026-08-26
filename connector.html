@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>HMK Süre Hesaplama — Connector</title>
+</head>
+<body>
+  <!--
+    Trello'nun "Iframe Connector URL" alanına girilecek tek sayfa budur.
+    Deploy ettiğiniz Vercel projesinin verdiği gerçek adres + bu dosya
+    adı (örn. https://<vercel-projeniz>.vercel.app/connector.html) Trello
+    Power-Up admin panelindeki "Iframe connector URL" alanına girilir
+    (bkz. README.md § "Trello Yapılandırması", adım 4). Bu sayfanın
+    görsel içeriği yoktur.
+
+    ÖNEMLİ: power-up.js artık SnoozeService / ReminderService /
+    SchedulerService / DateUtils gibi paylaşılan modüllere bağımlı
+    (Özellik 1 ve 2 için). Bu yüzden bu sayfa, power-up.js'den ÖNCE,
+    doğru bağımlılık sırasıyla tüm katman dosyalarını yükler:
+
+      config.js + configGuard.js  (TRELLO_API_KEY tek kaynak; boşsa erken/açık hata)
+      dateUtils.js                (temel yardımcı, bağımlılığı yok)
+      storageService.js            (t.get/t.set ince katmanı, bağımlılığı yok)
+      settingsService.js            (StorageService'e bağımlı)
+      snoozeService.js               (StorageService + DateUtils'e bağımlı)
+      browserNotificationAdapter.js
+      emailAdapter.js
+      slackAdapter.js
+      teamsAdapter.js
+      discordAdapter.js              (5 kanal adaptörü, bağımlılığı yok)
+      notificationService.js          (adaptörlere + StorageService'e bağımlı)
+      reminderService.js               (yukarıdaki hepsine bağımlı)
+      schedulerService.js               (StorageService + ReminderService'e bağımlı)
+      power-up.js                        (hepsini kullanır, initialize() burada)
+  -->
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+
+  <script src="config.js"></script>
+  <script src="configGuard.js"></script>
+
+  <script src="dateUtils.js"></script>
+  <script src="storageService.js"></script>
+  <script src="settingsService.js"></script>
+  <script src="snoozeService.js"></script>
+
+  <script src="browserNotificationAdapter.js"></script>
+  <script src="emailAdapter.js"></script>
+  <script src="slackAdapter.js"></script>
+  <script src="teamsAdapter.js"></script>
+  <script src="discordAdapter.js"></script>
+  <script src="notificationService.js"></script>
+
+  <script src="reminderService.js"></script>
+  <script src="schedulerService.js"></script>
+
+  <script src="power-up.js"></script>
+</body>
+</html>

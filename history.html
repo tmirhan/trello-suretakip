@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bildirim Geçmişi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2 class="settings-title">🗒️ Bildirim Geçmişi</h2>
+
+    <p class="hint" id="historyEmptyNote" hidden>Henüz gönderilmiş bir bildirim yok.</p>
+
+    <table class="history-table" id="historyTable" hidden>
+      <thead>
+        <tr>
+          <th>Tarih</th>
+          <th>Kart</th>
+          <th>Eşik</th>
+          <th>Kime</th>
+          <th>Yöntem</th>
+          <th>Durum</th>
+        </tr>
+      </thead>
+      <tbody id="historyTableBody"></tbody>
+    </table>
+
+    <div class="button-row">
+      <button type="button" id="clearHistoryBtn" class="btn btn-secondary">Geçmişi Temizle</button>
+    </div>
+  </div>
+
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  <script src="config.js"></script>
+  <script src="configGuard.js"></script>
+  <script src="storageService.js"></script>
+  <script src="history.js"></script>
+</body>
+</html>

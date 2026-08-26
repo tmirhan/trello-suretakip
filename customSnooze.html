@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Özel Tarih Seç</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <label for="customSnoozeDate" class="field-label">Bu kart hangi tarihe kadar gizlensin?</label>
+    <input type="date" id="customSnoozeDate" class="text-input" />
+    <p class="error-message" id="customSnoozeError" hidden></p>
+    <div class="button-row">
+      <button type="button" id="customSnoozeConfirm" class="btn btn-primary">Ertele</button>
+    </div>
+  </div>
+
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  <script src="config.js"></script>
+  <script src="configGuard.js"></script>
+  <script src="dateUtils.js"></script>
+  <script src="storageService.js"></script>
+  <script src="snoozeService.js"></script>
+  <script src="customSnooze.js"></script>
+</body>
+</html>

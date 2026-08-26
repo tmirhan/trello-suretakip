@@ -1,0 +1,26 @@
+{
+  "_note": "Bu dosya belgeleme/referans amaçlıdır. Trello'nun klasik Power-Up paneli (trello.com/power-ups/admin) bu dosyayı otomatik olarak okumaz; Connector URL ve capability listesi Trello'nun web arayüzünden manuel olarak girilir/işaretlenir (bkz. README.md § Trello Yapılandırması). connectors.iframe.url alanı burada kasıtlı olarak boş bırakılmıştır — gerçek değeri, sizin Vercel deploy'unuzun verdiği adres + /connector.html'dir.",
+  "name": "HMK Süre Hesaplama",
+  "details": "6100 sayılı Hukuk Muhakemeleri Kanunu m.90, m.91 ve m.93 hükümlerine uygun hukuki süre hesaplaması yapar; hesaplanan son günü kartın Bitiş Tarihi alanına yazar; kartların süresini geçici olarak gizleyebilir/erteleyebilir; yaklaşan/geçmiş son tarihler için Tarayıcı, E-posta, Slack, Teams ve Discord kanallarından otomatik hatırlatma gönderir.",
+  "author": "HMK Süre Hesaplama",
+  "version": "1.0.0",
+  "connectors": {
+    "iframe": {
+      "url": ""
+    }
+  },
+  "capabilities": [
+    "card-buttons",
+    "board-buttons",
+    "card-badges",
+    "authorization-status",
+    "show-settings"
+  ],
+  "listing": {
+    "tr": {
+      "name": "HMK Süre Hesaplama",
+      "overview": "Hukuki süre hesaplamalarını HMK'ya uygun şekilde otomatikleştirir ve yaklaşan son tarihler için çok kanallı hatırlatma gönderir.",
+      "description": "E-Tebliğ, Tefhim ve Fiziki Tebliğ türlerine göre süre başlangıcını hesaplar; gün/hafta/ay bazlı süreleri hafta sonu ve resmî tatilleri dikkate alarak hesaplayıp kartın Bitiş Tarihi alanına yazar. Kartların süresini gizleyebilir/erteleyebilir ve 7 gün önce / 3 gün önce / 1 gün önce / son gün / süresi geçince eşiklerinde Tarayıcı, E-posta, Slack, Teams ve Discord kanallarından bildirim gönderir."
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gizli Kartlar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="hidden-banner" id="hiddenBanner">
+      <span id="hiddenBannerText">Yükleniyor…</span>
+    </div>
+
+    <ul class="hidden-cards-list" id="hiddenCardsList"></ul>
+
+    <p class="hint" id="hiddenEmptyNote" hidden>Şu anda gizlenmiş/ertelenmiş kart yok.</p>
+
+    <div class="button-row">
+      <button type="button" id="showAllBtn" class="btn btn-primary">Tümünü Tekrar Göster</button>
+    </div>
+  </div>
+
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  <script src="config.js"></script>
+  <script src="configGuard.js"></script>
+  <script src="dateUtils.js"></script>
+  <script src="storageService.js"></script>
+  <script src="snoozeService.js"></script>
+  <script src="hiddenCards.js"></script>
+</body>
+</html>
