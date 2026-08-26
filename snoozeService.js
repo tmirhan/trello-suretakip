@@ -116,6 +116,9 @@
 
   // Power-Up kaydını sakla
   await SS.setBoardShared(t, SS.KEYS.HIDDEN_CARDS_MAP, map);
+    if (!until) {
+  await t.set('card', 'due', null);
+}
     
   return map[card.id];
 }
