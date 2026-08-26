@@ -25,7 +25,7 @@
  * -----------------------------------------------------------------------
  */
 
-/* global StorageService, DateUtils */
+/* global StorageService, DateUtils, TrelloPowerUp */
 
 (function initSnoozeService(root) {
   const SS = typeof StorageService !== 'undefined' ? StorageService : root.StorageService;
