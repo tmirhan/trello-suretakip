@@ -118,7 +118,7 @@
   await SS.setBoardShared(t, SS.KEYS.HIDDEN_CARDS_MAP, map);
 
   // "Süreyi Gizle" seçildiyse Trello'nun gerçek Bitiş Tarihini kaldır
-  if (!until) {
+  if (until === null) {
     await t.set('card', 'due', null);
   }
 
