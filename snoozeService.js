@@ -113,6 +113,8 @@
       setAtISO: new Date().toISOString(),
     };
     await SS.setBoardShared(t, SS.KEYS.HIDDEN_CARDS_MAP, map);
+    // Trello kartındaki gerçek Due Date'i kaldır
+await t.set('card', 'due', null);
     return map[card.id];
   }
 
