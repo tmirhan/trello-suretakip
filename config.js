@@ -21,7 +21,7 @@
  */
 
 window.HMK_CONFIG = {
-  TRELLO_API_KEY: 'TEST123',
+  TRELLO_API_KEY: '97b1c28be3ed1475d6ab733b838fd8ab',
   APP_NAME: 'TRELLO HUKUKİ SÜRE HESAPLA',
   EMAIL_BACKEND_URL: '/api/send-email',
 };
